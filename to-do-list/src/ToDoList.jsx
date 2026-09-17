@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import './ToDoList.css'
 export default function ToDoList(){
     const [tasks,setTasks]=useState([])
     const [newTask,setNewTask]=useState("");
@@ -6,9 +7,15 @@ export default function ToDoList(){
         setNewTask(event.target.value);
     }
     function addTask(){
-        setTasks(t => [...t,newTask]);
-        setNewTask("");
-     }
+        if (newTask.trim()!==""){
+            setTasks(t => [...t,newTask]);
+            setNewTask("");
+        }
+        const inputField=document.getElementById("input-field");
+        inputField.focus();
+        
+        
+    }
     function deleteTask(index){
         setTasks(t=>t.filter((_,i)=>i!==index));
     }
@@ -29,7 +36,13 @@ export default function ToDoList(){
         <div className="to-do-list">
             <h1>To-Do List</h1>
             <div>
-                <input type="text" placeholder="Enter a task..." value={newTask} onChange={handleInputChange}/>
+                <input type="text" placeholder="Enter a task..." value={newTask} onChange={handleInputChange} id="input-field"
+                    onKeyDown={(e)=>{
+                        if(e.key==="Enter"){
+                            addTask();
+                        }
+                    }}    
+                />
                 <button onClick={addTask}>Add Task</button>
             </div>
             <ol>
