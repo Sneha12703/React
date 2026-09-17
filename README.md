@@ -16,9 +16,8 @@ A simple to-do list web application built with **React JS** to learn the ropes o
 ## 💡 Why This Project?
 The main goal of this project was to get comfortable with React state management while practicing core Git commands:
 
-\`\`\`bash
+```bash
 git init
 git add .
 git commit -m "feat: added basic todo functionality"
 git push origin main
-\`\`\`
